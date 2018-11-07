@@ -1,0 +1,22 @@
+.login {
+    height: 100%;
+    background-image: url(../assets/login_bg.svg);
+    .login-card {
+        position: relative;
+        top: 40%;
+        transform: translateY(-50%);
+        .login-title {
+            text-align: center;
+            font-size: 23px;
+            margin-bottom: 50px;
+            img {
+                margin-right: 10px;
+            }
+        }
+        .login-form-button {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+        }
+    }
+}

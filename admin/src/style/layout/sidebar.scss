@@ -1,0 +1,31 @@
+.sider {
+    overflow-x: hidden;
+}
+
+.sider::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-logo {
+    display: grid;
+    grid-template-columns: 66px 66px 66px;
+    text-align: center;
+    line-height: 64px;
+    height: 64px;
+    span {
+        color: white;
+        font-size: 20px;
+    }
+    img {
+        height: 30px;
+        margin: auto
+    }
+}
+.sidebar-logo-collapsed {
+    text-align: center;
+    line-height: 64px;
+    img {
+        height: 40px;
+        margin: auto
+    }
+}
