@@ -1,0 +1,7 @@
+{
+  "extends": "eslint-config-egg",
+  "rules": {
+    "linebreak-style": [0, "warn", "windows"],
+    "semi": [0, "always"]
+  }
+}

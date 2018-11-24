@@ -6,7 +6,7 @@ import '@/style/main.scss'
 import SideMenu from './layout/sideMenu'
 import HeaderBar from './layout/headerBar'
 
-import { Pages } from './index'
+import Pages from './pages'
 
 
 const { Header, Sider, Content } = Layout;
@@ -43,11 +43,12 @@ const Main = () => {
                     <HeaderBar collapsed={collapsed} handleCollapsedChange={handleCollapsedChange} />
                     
                 </Header>
-                <Content>
+                <Content className="content">
                     <Switch>
                         <Redirect exact from='/main' to='/main/home' />
                         <Route path="/main/home" component={ Pages.Home } />
                         <Route path="/main/user" component={ Pages.User } />
+                        <Route path="/main/newBulletin" component={ Pages.NewBulletin } />
                     </Switch>
                 </Content>
             </Layout>

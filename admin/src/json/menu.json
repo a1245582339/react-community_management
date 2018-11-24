@@ -20,7 +20,8 @@
 	"icon": "sound",
 	"children": [{
 		"name": "新增公告",
-		"icon": "form"
+		"icon": "form",
+		"path": "/newBulletin"
 	}, {
 		"name": "公告管理",
 		"icon": "snippets"
