@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "egg": "^2.2.1",
+    "egg-knex": "^2.0.11",
     "egg-mongo-native": "^3.2.2",
     "egg-mysql": "^3.0.0",
     "egg-passport": "^2.0.1",

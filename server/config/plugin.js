@@ -19,3 +19,7 @@ exports.sequelize = {
   package: 'egg-sequelize',
 }
 
+exports.knex = {
+  enable: true,
+  package: 'egg-knex',
+};

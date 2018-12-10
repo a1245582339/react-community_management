@@ -15,6 +15,34 @@ module.exports = appInfo => {
     },
   };
 
+  exports.knex = {
+    // database configuration
+    client: {
+      // database dialect
+      dialect: 'mysql',
+      connection: {
+        // host
+        host: 'localhost',
+        // port
+        port: '3306',
+        // username
+        user: 'root',
+        // password
+        password: '1',
+        // database
+        database: 'community_management',
+      },
+      // connection pool
+      pool: { min: 0, max: 5 },
+      // acquire connection timeout, millisecond
+      acquireConnectionTimeout: 30000,
+    },
+    // load into app, default is open
+    app: true,
+    // load into agent, default is close
+    agent: false,
+  };
+
   config.mysql = {
     // 单数据库信息配置
     client: {

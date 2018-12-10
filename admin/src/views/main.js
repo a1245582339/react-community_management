@@ -49,6 +49,7 @@ const Main = () => {
                         <Route path="/main/home" component={ Pages.Home } />
                         <Route path="/main/user" component={ Pages.User } />
                         <Route path="/main/newBulletin" component={ Pages.NewBulletin } />
+                        <Route path="/main/community" component={ Pages.Community } />
                     </Switch>
                 </Content>
             </Layout>
