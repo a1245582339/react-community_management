@@ -15,6 +15,18 @@ class Community extends Service {
     return community;
   }
 
+  async updateCommunity(id, data) {
+    const updateCal = await this.app.knex('community')
+      .update(data)
+      .where('id', id)
+    return updateCal === 1
+  }
+
+  async createCommunity(data) {
+    const updateCal = await this.app.knex.insert(data).into('community')
+    return updateCal === 1
+  }
+
   async findDept() {
     const dept = await this.app.knex('dept').where({ isDel: 0 })
     return dept;

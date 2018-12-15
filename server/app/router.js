@@ -13,8 +13,12 @@ module.exports = app => {
   router.get('/admin/login', controller.auth.login);
   // 登录校验
   router.post('/admin/login', app.passport.authenticate('local', { successRedirect: '/admin/callback' }));
+
   // 获取社团
   router.get('/community', controller.community.getCommunity)
+  // 更新社团
+  router.post('/community', controller.community.updateCommunity)
+
   // 获取部门
   router.get('/dept', controller.community.getDept)
   // 获取分类
