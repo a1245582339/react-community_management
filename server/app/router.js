@@ -23,9 +23,18 @@ module.exports = app => {
   router.get('/dept', controller.community.getDept)
   // 获取分类
   router.get('/community/type', controller.community.getType)
+  // 编辑分类
+  router.post('/community/type', controller.community.updateType)
 
   // 获取公告
   router.get('/notice', controller.notice.getNotice)
+  // 更新公告
+  router.post('/notice', controller.notice.updateNotice)
   // 获取公告日志
   router.get('/notice/log', controller.notice.getNoticeLog)
+  // 新增公告日志
+  router.post('/notice/log', controller.notice.createNoticeLog)
+
+  // 获取学生信息
+  router.get('/student', controller.student.getStudent)
 };

@@ -11,6 +11,16 @@ class Notice extends Controller {
   }
 
   async updateNotice() {
+    const ctx = this.ctx;
+    const id = ctx.request.body.id
+    const data = ctx.request.body.data
+    if (id) {
+      await ctx.service.notice.updateNotice(id, data)
+    } else {
+      data.create_time = (new Date()).getTime()
+      await ctx.service.notice.createNotice(data)
+    }
+    this.ctx.body = { code: 20000, msg: '更新成功' }
   }
 
   async getNoticeLog() {
@@ -20,6 +30,14 @@ class Notice extends Controller {
     end_time = end_time || (new Date()).getTime()
     const data = await ctx.service.notice.findNoticeLog(notice_id, start_time, end_time)
     this.ctx.body = { code: 20000, msg: '公告日志', data }
+  }
+
+  async createNoticeLog() {
+    const ctx = this.ctx;
+    const data = ctx.request.body.data
+    data.create_time = Date.now()
+    await ctx.service.notice.createNoticeLog(data)
+    this.ctx.body = { code: 20000, msg: 'log' }
   }
 
 }

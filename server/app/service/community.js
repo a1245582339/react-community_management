@@ -36,6 +36,18 @@ class Community extends Service {
     const community_type = await this.app.knex('community_type').where({ isDel: 0 })
     return community_type;
   }
+
+  async updateType(id, data) {
+    const updateCal = await this.app.knex('community_type')
+      .update(data)
+      .where('id', id)
+    return updateCal === 1
+  }
+
+  async createType(data) {
+    const updateCal = await this.app.knex.insert(data).into('community_type')
+    return updateCal === 1
+  }
 }
 
 module.exports = Community;

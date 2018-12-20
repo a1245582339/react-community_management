@@ -34,6 +34,17 @@ class Community extends Controller {
     const data = await ctx.service.community.findType({})
     this.ctx.body = { code: 20000, msg: '社团分类列表', data }
   }
+  async updateType() {
+    const ctx = this.ctx;
+    const id = ctx.request.body.id
+    const data = ctx.request.body.data
+    if (id) {
+      await ctx.service.community.updateType(id, data)
+    } else {
+      data.create_time = Date.now()
+      await ctx.service.community.createType(data)
+    }
+  }
 }
 
 module.exports = Community;
