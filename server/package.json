@@ -4,6 +4,7 @@
   "description": "",
   "private": true,
   "dependencies": {
+    "astral-regex": "^1.0.0",
     "await-stream-ready": "^1.0.1",
     "egg": "^2.2.1",
     "egg-knex": "^2.0.10",

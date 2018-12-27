@@ -36,7 +36,7 @@ class Notice extends Service {
       .leftJoin('notice', 'notice_log.notice_id', 'notice.id')
       .leftJoin('student', 'notice_log.stu_id', 'student.stu_id')
       .where({ notice_id })
-      .whereBetween('notice_log.create_time', [ start_time, end_time ])
+     // .whereBetween('notice_log.create_time', [ start_time, end_time ])
     return log
   }
 

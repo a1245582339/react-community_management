@@ -41,6 +41,12 @@ class Community extends Service {
     const updateCal = await this.app.knex('community_type')
       .update(data)
       .where('id', id)
+    if (data.isDel) {
+      const delCommunity = await this.app.knex('community')
+        .update({isDel: 1})
+        .where('type', id)  // 级联删除
+      return delCommunity === 1
+    }
     return updateCal === 1
   }
 

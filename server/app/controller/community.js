@@ -40,9 +40,10 @@ class Community extends Controller {
     const data = ctx.request.body.data
     if (id) {
       await ctx.service.community.updateType(id, data)
+      ctx.body = { code: 20000, msg: '修改成功' }
     } else {
-      data.create_time = Date.now()
       await ctx.service.community.createType(data)
+      ctx.body = { code: 20000, msg: '新增成功' }
     }
   }
 }

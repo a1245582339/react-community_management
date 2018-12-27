@@ -21,6 +21,7 @@ class Admin extends Controller {
 
   async getUserInfo() {
     const ctx = this.ctx;
+    console.log(jwt.verify(ctx.request.header.authorization.split(' ')[1], 'secret'))
     const { login_name, password } = jwt.verify(ctx.request.header.authorization.split(' ')[1], 'secret');
     const res = await ctx.service.admin.find({ login_name, password })
     if (res.length) {
@@ -45,11 +46,28 @@ class Admin extends Controller {
   async updateAdmin() {
     const ctx = this.ctx;
     const {id, data} = ctx.request.body;
-    try { 
-      await ctx.service.admin.update({id, data})
+    if (id) {
+      await ctx.service.admin.update(id, data)
       ctx.body = {code: 20000, msg: '更新成功'}
-    } catch (err) {
-      throw err
+    } else {
+      const isExsit = (await ctx.service.admin.find({login_name: data.login_name})).length
+      if (isExsit) {
+        await ctx.service.admin.create(data)
+        ctx.body = {code: 20003, msg: '用户名已存在，新增失败！'}
+      } else {
+        ctx.body = {code: 20000, msg: '新增成功'}
+      }
+    }
+  }
+
+  async checkPassword() {
+    const ctx = this.ctx;
+    const { login_name, password } = ctx.request.query;
+    const res = await ctx.service.admin.find({ login_name, password })
+    if (res.length) {
+      ctx.body = {code: 20000, msg: '校验成功'}
+    } else {
+      ctx.body = {code: 20004, msg: '校验失败'}
     }
   }
 }

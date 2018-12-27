@@ -10,10 +10,13 @@ module.exports = app => {
   // 管理员获取用户信息
   router.get('/info/admin', controller.admin.getUserInfo);
 
-  
-
   // 获取管理员列表
   router.get('/admin', controller.admin.getUserList)
+  // 获取管理员列表
+  router.get('/admin/password', controller.admin.checkPassword)
+  // 更新管理员信息
+  router.post('/admin', controller.admin.updateAdmin);
+  
   // 获取社团
   router.get('/community', controller.community.getCommunity)
   // 更新社团
@@ -39,8 +42,14 @@ module.exports = app => {
 
   // 用户登录校验
   router.post('/login/student', controller.student.login);
+  // 更新学生信息
+  router.get('/student/password', controller.student.checkPassword)
   // 管理员获取用户信息
   router.get('/info/student', controller.student.getUserInfo);
   // 获取学生信息
   router.get('/student', controller.student.getStudent)
+  // 更新学生信息
+  router.post('/student', controller.student.updateStu)
+  // 获取学生参加的社团
+  router.get('/student/community', controller.student.getCommunity)
 };

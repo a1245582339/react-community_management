@@ -29,7 +29,7 @@ class Notice extends Controller {
   async getNoticeLog() {
     const ctx = this.ctx;
     let { notice_id, start_time, end_time } = ctx.request.query
-    start_time = start_time || 0
+    start_time = start_time || (new Date()).getTime() - 604800000
     end_time = end_time || (new Date()).getTime()
     const data = await ctx.service.notice.findNoticeLog(notice_id, start_time, end_time)
     this.ctx.body = { code: 20000, msg: '公告日志', data }
@@ -37,16 +37,17 @@ class Notice extends Controller {
 
   async createNoticeLog() {
     const ctx = this.ctx;
-    const data = ctx.request.body.data
-    data.create_time = Date.now()
+    const data = ctx.request.body
+    data.create_time = (new Date()).getTime()
     await ctx.service.notice.createNoticeLog(data)
-    this.ctx.body = { code: 20000, msg: 'log' }
+    this.ctx.body = { code: 20000, msg: 'logok' }
   }
 
   async upload() {
     const ctx = this.ctx
+    console.log(ctx)
     const stream = await ctx.getFileStream()
-    console.log(stream._readableState.buffer)
+    
     const filename = 'notice_' + Date.now() + Math.random().toString(36).substr(2) + path
             .extname(stream.filename)
             .toLocaleLowerCase();
@@ -54,7 +55,6 @@ class Notice extends Controller {
     const writeStream = fs.createWriteStream(target);
     try {
       await awaitWriteStream(stream.pipe(writeStream));
-      // await fs.writeFile(target + filename, stream._readableState.buffer)
       ctx.body = {msg: 'ok'}
     } catch (err) {
       throw err

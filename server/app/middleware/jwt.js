@@ -11,12 +11,15 @@ module.exports = () => {
         const decoded = jwt.verify(token, 'secret');
         await next()
       } catch (err) {
-        console.log('err=>>>>>>>>>>>>', err)
-        ctx.body = {
-          code: 20001,
-          message: '身份认证过期请重新登录!',
+        if (err.message === 'invalid token') {
+          ctx.body = {
+            code: 20001,
+            message: '身份认证过期请重新登录!',
+          }
+          ctx.status = 401;
+        } else {
+          throw err
         }
-        ctx.status = 401;
       }
     } else {
       ctx.body = {
