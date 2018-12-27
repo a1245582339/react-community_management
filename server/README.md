@@ -94,7 +94,7 @@ Content-Type:application/json
 
 {
     "code": 20000,
-    "msg": "更新成功" || "新增成功"
+    "msg": "更新成功/新增成功"
 }
 ```
 ***
@@ -463,7 +463,7 @@ HTTP/1.1 200 OK
 Content-Type:application/json
 {
     "code": 20000,
-    "msg": "修改成功" || "新增成功"
+    "msg": "修改成功/新增成功"
 }
 ```
 ***
