@@ -5,15 +5,15 @@
  */
 module.exports = app => {
   const { router, controller } = app;
+  // 管理员登录校验
+  router.post('/login/admin', controller.admin.login);
+  // 管理员获取用户信息
+  router.get('/info/admin', controller.admin.getUserInfo);
 
-  // 鉴权成功后的回调页面
-  router.get('/admin/callback', controller.auth.authCallback);
+  
 
-  // 渲染登录页面，用户输入账号密码
-  router.get('/admin/login', controller.auth.login);
-  // 登录校验
-  router.post('/admin/login', app.passport.authenticate('local', { successRedirect: '/admin/callback' }));
-
+  // 获取管理员列表
+  router.get('/admin', controller.admin.getUserList)
   // 获取社团
   router.get('/community', controller.community.getCommunity)
   // 更新社团
@@ -30,11 +30,17 @@ module.exports = app => {
   router.get('/notice', controller.notice.getNotice)
   // 更新公告
   router.post('/notice', controller.notice.updateNotice)
+  // 上传图片
+  router.post('/notice/upload', controller.notice.upload)
   // 获取公告日志
   router.get('/notice/log', controller.notice.getNoticeLog)
   // 新增公告日志
   router.post('/notice/log', controller.notice.createNoticeLog)
 
+  // 用户登录校验
+  router.post('/login/student', controller.student.login);
+  // 管理员获取用户信息
+  router.get('/info/student', controller.student.getUserInfo);
   // 获取学生信息
   router.get('/student', controller.student.getStudent)
 };

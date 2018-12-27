@@ -5,7 +5,7 @@ exports.mysql = {
 };
 
 exports.passport = {
-  enable: true,
+  enable: false,
   package: 'egg-passport',
 };
 

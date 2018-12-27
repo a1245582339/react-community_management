@@ -7,7 +7,12 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1540883393211_8180';
 
   // add your config here
-  config.middleware = [];
+  config.middleware = [
+    'jwt',
+  ];
+  config.jwt = {
+    ignore: '/login',
+  }
 
   config.security = {
     csrf: {
