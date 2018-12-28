@@ -6,8 +6,8 @@ class Community extends Controller {
   async getCommunity() {
     const ctx = this.ctx;
     const query = ctx.request.query
-    const data = await ctx.service.community.findList(query)
-    this.ctx.body = { code: 20000, msg: '社团列表', data }
+    const {community, count} = await ctx.service.community.findList(query)
+    this.ctx.body = { code: 20000, msg: '社团列表', data: community, count }
   }
 
   async updateCommunity() {

@@ -6,13 +6,15 @@ class Community extends Service {
   async findList(query) {
     const community = await this.app.knex('community')
       .leftJoin('student', 'community.chairman_stu_id', 'student.stu_id')
-      .select('community.*', 'student.stu_name')
+      .leftJoin('community_type', 'community.type', 'community_type.id')
+      .select('community.*', 'student.stu_name', 'community_type.type_name')
       .where('community_name', 'like', `%${query.community_name || ''}%`)
       .orderBy('id', 'asc')
       .orderBy('create_time', 'asc')
       .offset(query.page * query.limit || 0)
       .limit(query.limit || 10)
-    return community;
+    const count = (await this.app.knex('community').count('*'))[0]['count(*)']
+    return {community, count};
   }
 
   async updateCommunity(id, data) {

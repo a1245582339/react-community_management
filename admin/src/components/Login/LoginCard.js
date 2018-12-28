@@ -8,7 +8,7 @@ const LoginCard = () => {
         <Card
             className="login-card"
             hoverable
-            style={{ width: '20%', margin: '0 auto' }}
+            style={{ width: '20%', minWidth: '500px', margin: '0 auto' }}
         >
             <div className="login-title">
                 <img width="30" src={ require("@/assets/logo.svg") } alt="logo"/>
