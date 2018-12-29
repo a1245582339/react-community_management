@@ -73,22 +73,22 @@ const Community = () => {
         useLoading(false)
     }
     const handleClickForm = () => {
-
+        useFormShow(true)
     }
     
     return (
         <>
-        <Search
-            style={{width: '300px'}}
-            placeholder="请输入社团名称"
-            onSearch={value => useSearchWord(value)}
-            enterButton
-        />
-        <Button icon="plus-circle" style={{float: 'right'}} type="primary" onClick={handleClickForm}>添加社团</Button>
-        <Table pagination={false} style={{marginTop: '20px',background: '#fff'}} dataSource={data} columns={columns} loading={loading} />
-        <Pagination style={{marginTop: '20px', float: 'right'}} showSizeChanger onChange={page => usePage(page - 1)} onShowSizeChange={(current, pageSize) => useLimit(pageSize)} defaultCurrent={1} total={count} />
-        
-        <FormModal formShow={formShow} />
+            <Search
+                style={{width: '300px'}}
+                placeholder="请输入社团名称"
+                onSearch={value => useSearchWord(value)}
+                enterButton
+            />
+            <Button icon="plus-circle" style={{float: 'right'}} type="primary" onClick={handleClickForm}>添加社团</Button>
+            <Table pagination={false} style={{marginTop: '20px',background: '#fff'}} dataSource={data} columns={columns} loading={loading} />
+            <Pagination style={{marginTop: '20px', float: 'right'}} showSizeChanger onChange={page => usePage(page - 1)} onShowSizeChange={(current, pageSize) => useLimit(pageSize)} defaultCurrent={1} total={count} />
+            
+            <FormModal formShow={formShow} />
         </>
     )
 }
