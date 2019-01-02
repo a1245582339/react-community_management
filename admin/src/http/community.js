@@ -1,8 +1,11 @@
 import http from './config'
 import { timestampToDate } from '@/utiles/time'
+import { ajaxGet } from '@/utiles/request'
+
 const communityStatus = ['未审核', '已审核', '已注销']
+
 export const getCommunity = async (params) => {
-    const dept = (await getDept()).data.data
+    const dept = (await getDept())
     const res = await http.get('/community', { params })
     const data = res.data.data.map((item, index) => {
         return {
@@ -17,6 +20,28 @@ export const getCommunity = async (params) => {
     return {data, count: res.data.count}
 }
 
-export const getDept = () => {
-    return http.get('/dept')
+export const getDept = async () => {
+    return ajaxGet('/dept')
+}
+
+export const getType = async () => {
+    return ajaxGet('/community/type')
+}
+
+export const getStu = async (stu_id) => {
+    const stu_list = (await http.get('/student', { 
+        params: {
+            stu_id
+        } 
+    })).data.data
+    return stu_list.map(item => {
+        return { 
+            text: `${item.stu_name}(${item.stu_id})`,
+            value: item.stu_id
+        }
+    })
+}
+
+export const postCommunity = (id, data) => {
+    return http.post('/community', { id, data })
 }

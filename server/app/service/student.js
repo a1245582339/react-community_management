@@ -4,13 +4,12 @@ const Service = require('egg').Service;
 
 class Student extends Service {
   async findStu(query, page, limit) {
-    console.log('asdasdasdasdsad', query)
     const stu = await this.app.knex('student')
-      .where(query)
+      .where('stu_id', 'like', `%${query.stu_id ? query.stu_id : ''}%`)
       .select('stu_id', 'stu_name', 'tel', 'sex')
       .offset(page * limit || 0)
       .limit(limit || 10)
-      orderBy('stu_id')
+      .orderBy('stu_id')
     return stu
   }
 
