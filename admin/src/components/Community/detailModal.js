@@ -34,7 +34,6 @@ const DetailModal = (props) => {
                 dataSource={member}
                 renderItem={item =>(
                     <List.Item actions={[<Button type="danger" ghost onClick={() => handleRemove(item.id)}>移除</Button>]}>
-
                         <List.Item.Meta
                             title={item.stu_name}
                             description={`手机号：${item.tel}`}

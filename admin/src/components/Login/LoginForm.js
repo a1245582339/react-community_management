@@ -14,7 +14,7 @@ const LoginFrom = (props) => {
                 const res = await login(values)
                 const token = res.data.token
                 setToken('bare ' + token)
-                console.log('Received values of form: ', res);
+                // console.log('Received values of form: ', res);
                 // props.history.push('/')
             }
         });

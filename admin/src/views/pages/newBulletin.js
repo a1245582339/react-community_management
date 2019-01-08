@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { Button, Input, Modal } from 'antd';
+import { Button, Input, Modal, message } from 'antd';
 import RichText from '@/components/RichText';
+import { createNotice } from '@/http/notice';
 import '@/style/pages/newBulletin.scss';
 
 const NewBulletin = () => {
@@ -32,13 +33,16 @@ const NewBulletin = () => {
         useVisible(true)
     }
 
-    const handleOk = () => {
+    const handleOk = async () => {
         const data = {
             title, 
             author,
             content: richText
         }
         useConfirmLoading(true)
+        await createNotice(data)
+        message.success('创建成功');
+        useConfirmLoading(false)
         console.log(data)
     }
 

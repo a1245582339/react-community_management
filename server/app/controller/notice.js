@@ -20,8 +20,8 @@ class Notice extends Controller {
     if (id) {
       await ctx.service.notice.updateNotice(id, data)
     } else {
-      data.create_time = (new Date()).getTime()
-      await ctx.service.notice.createNotice(data)
+      const create_time = (new Date()).getTime()
+      await ctx.service.notice.createNotice({...data, create_time})
     }
     this.ctx.body = { code: 20000, msg: '更新成功' }
   }
@@ -45,17 +45,17 @@ class Notice extends Controller {
 
   async upload() {
     const ctx = this.ctx
-    console.log(ctx)
+    console.log('body>>>>>>>>>', ctx)
     const stream = await ctx.getFileStream()
     
     const filename = 'notice_' + Date.now() + Math.random().toString(36).substr(2) + path
             .extname(stream.filename)
             .toLocaleLowerCase();
-    const target = './app/file/img/' + filename
+    const target = './app/public/img/' + filename
     const writeStream = fs.createWriteStream(target);
     try {
       await awaitWriteStream(stream.pipe(writeStream));
-      ctx.body = {msg: 'ok'}
+      ctx.body = {msg: 'ok', url: 'http://localhost:3000/public/img/' + filename}
     } catch (err) {
       throw err
     }

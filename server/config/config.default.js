@@ -11,7 +11,7 @@ module.exports = appInfo => {
     'jwt',
   ];
   config.jwt = {
-    ignore: '/login',
+    ignore: ['/login'],
   }
 
   config.security = {
