@@ -46,6 +46,20 @@ class Community extends Controller {
       ctx.body = { code: 20000, msg: '新增成功' }
     }
   }
+  async getCommunityMember() {
+    const ctx = this.ctx
+    const community_id = ctx.request.query.community_id
+    const member = await ctx.service.community.findMember(community_id)
+    ctx.body = { code: 20000, msg:'社团成员', data: member }
+  }
+
+  async updateCommunityMember() {
+    const ctx = this.ctx
+    const id = ctx.request.body.id
+    const data = ctx.request.body.data
+    const res = id ? await ctx.service.community.updateMember(id, data) : await ctx.service.community.createMember(data)
+    ctx.body = { code: 20000, msg:'更新成功' }
+  }
 }
 
 module.exports = Community;

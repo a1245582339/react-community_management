@@ -56,6 +56,25 @@ class Community extends Service {
     const updateCal = await this.app.knex.insert(data).into('community_type')
     return updateCal === 1
   }
+
+  async findMember(community_id) {
+    const member = await this.app.knex.select('student.stu_id', 'student.stu_name', 'student.tel', 'community_student.role', 'community_student.id')
+      .from('community_student')
+      .where({community_id, isDel: 0})
+      .leftJoin('student', 'community_student.stu_id', 'student.stu_id')
+    return member
+  }
+
+  async createMember(data) {
+    const createCal = await this.app.knex.insert(data).into('community_student')
+    return createCal === 1
+  }
+
+  async updateMember(id, data) {
+    const updateCal = await this.app.knex('community_student').update(data).where('id', id)
+    return updateCal === 1
+  }
+
 }
 
 module.exports = Community;

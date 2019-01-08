@@ -45,3 +45,16 @@ export const getStu = async (stu_id) => {
 export const postCommunity = (id, data) => {
     return http.post('/community', { id, data })
 }
+
+export const getMemeber = (community_id) => {
+    return ajaxGet('/community/student', {community_id})
+}
+
+export const removeMemeber = (id) => {
+    return http.post('/community/student', {
+        id,
+        data: {
+            isDel: 1
+        }
+    })
+}

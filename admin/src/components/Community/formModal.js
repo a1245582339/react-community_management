@@ -37,6 +37,7 @@ const FormModal = (props) => {
             const res = postCommunity(id, values)
             props.onClose()
             form.resetFields()
+            props.onSuccess( id ? '更新成功' : '新增成功' )
             console.log('Received values of form: ', res)
         });
     }
@@ -68,10 +69,7 @@ const FormModal = (props) => {
                     label="社团描述"
                 >
                     {getFieldDecorator('desp', {
-                        initialValue:  props.formData ? props.formData.desp : '',
-                        rules: [{
-                            required: true, message: '请输入社团描述！'
-                        }]
+                        initialValue:  props.formData ? props.formData.desp : ''
                     })(
                         <Input />
                     )}
@@ -88,7 +86,7 @@ const FormModal = (props) => {
                         }]
                     })(
                         <Select style={{ width: 200 }} placeholder="请选择">
-                            {props.dept.map(d => <Option key={d.id}>{d.dept_name}</Option>)}
+                            {props.dept.map(d => <Option key={d.id} value={d.id}>{d.dept_name}</Option>)}
                         </Select>
                     )}
                 </Form.Item>
@@ -103,7 +101,7 @@ const FormModal = (props) => {
                         }]
                     })(
                         <Select style={{ width: 200 }} placeholder="请选择">
-                            {props.dept.map(d => <Option key={d.id}>{d.dept_name}</Option>)}
+                            {props.dept.map(d => <Option key={d.id} value={d.id}>{d.dept_name}</Option>)}
                         </Select>
                     )}
                 </Form.Item>
@@ -112,13 +110,30 @@ const FormModal = (props) => {
                     label="分类"
                 >
                     {getFieldDecorator('type', {
-                        initialValue:  props.formData ? props.formData.type : '',
+                        initialValue: props.formData ? props.formData.type : '',
                         rules: [{
                             required: true, message: '请选择分类！'
                         }]
                     })(
                         <Select style={{ width: 200 }} placeholder="请选择">
-                            {props.type.map(d => <Option key={d.id}>{d.type_name}</Option>)}
+                            {props.type.map(d => <Option key={d.id} value={d.id} >{d.type_name}</Option>)}
+                        </Select>
+                    )}
+                </Form.Item>
+                <Form.Item
+                    {...formItemLayout}
+                    label="状态"
+                >
+                    {getFieldDecorator('status', {
+                        initialValue:  props.formData ? props.formData.status : '',
+                        rules: [{
+                            required: true, message: '请选择分类！'
+                        }]
+                    })(
+                        <Select style={{ width: 200 }} placeholder="请选择">
+                            <Option value={0}>{'未审核'}</Option>
+                            <Option value={1}>{'已审核'}</Option>
+                            <Option value={2}>{'已注销'}</Option>
                         </Select>
                     )}
                 </Form.Item>

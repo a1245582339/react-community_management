@@ -19,6 +19,10 @@ module.exports = app => {
   
   // 获取社团
   router.get('/community', controller.community.getCommunity)
+  // 获取社团成员
+  router.get('/community/student', controller.community.getCommunityMember)
+  // 更新社团成员
+  router.post('/community/student', controller.community.updateCommunityMember)
   // 更新社团
   router.post('/community', controller.community.updateCommunity)
 
