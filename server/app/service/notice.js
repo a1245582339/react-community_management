@@ -10,7 +10,7 @@ class Notice extends Service {
         .select('id', 'title', 'content', 'author', 'create_time')
       : await this.app.knex('notice')
         .where('title', 'like', `%${query.title || ''}%`)
-        .select('title', 'author', 'create_time')
+        .select('id', 'title', 'author', 'create_time')
         .andWhere({ isDel: 0 })
         .orderBy('create_time', 'desc')
         .offset(query.page * query.limit || 0)

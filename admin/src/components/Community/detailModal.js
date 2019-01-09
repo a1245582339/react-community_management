@@ -22,8 +22,8 @@ const DetailModal = (props) => {
         <Modal
             title={`${props.detail.community_name}成员`}
             visible={props.show}
-            onOk={() => props.onClose()}
-            onCancel={() => props.onClose()}
+            onOk={() => {props.onClose(); useMember([])}}
+            onCancel={() => {props.onClose(); useMember([])}}
             cancelButtonProps={{ style: {display: 'none'} }}
         >
             <List

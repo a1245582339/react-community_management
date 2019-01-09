@@ -44,7 +44,7 @@ const Notice = () => {
                 renderItem={item => (
                     <List.Item
                         key={item.title}
-                        actions={[<span style={{color: '#1890ff'}} onClick={() => {useNoticeId(item.id); usePreviewShow(true)}}>预览</span>, <span style={{color: '#f5222d'}}>删除</span>]}
+                        actions={loading ? [] :[<span style={{color: '#1890ff'}} onClick={() => {useNoticeId(item.id); usePreviewShow(true)}}>预览</span>, <span style={{color: '#f5222d'}}>删除</span>]}
                     >
                         <Skeleton loading={loading} active paragraph={{ rows: 1 }}>
                             <List.Item.Meta
