@@ -7,7 +7,7 @@ class Notice extends Service {
     const notice = query.id
       ? await this.app.knex('notice')
         .where({ id: query.id, isDel: 0 })
-        .select('title', 'content', 'author', 'create_time')
+        .select('id', 'title', 'content', 'author', 'create_time')
       : await this.app.knex('notice')
         .where('title', 'like', `%${query.title || ''}%`)
         .select('title', 'author', 'create_time')
@@ -15,7 +15,13 @@ class Notice extends Service {
         .orderBy('create_time', 'desc')
         .offset(query.page * query.limit || 0)
         .limit(query.limit || 10)
-    return notice;
+      if (query.id) {
+        return {notice};
+      }
+      const count = (await this.app.knex('notice').where({isDel: 0}).count('*'))[0]['count(*)']
+      console.log(count)
+      return {notice, count};
+     
   }
 
   async updateNotice(id, data) {

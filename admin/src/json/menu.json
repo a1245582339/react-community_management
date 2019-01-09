@@ -22,7 +22,8 @@
 		"path": "/newBulletin"
 	}, {
 		"name": "公告管理",
-		"icon": "snippets"
+		"icon": "snippets",
+		"path": "/notice"
 	}, {
 		"name": "流量统计",
 		"icon": "area-chart"

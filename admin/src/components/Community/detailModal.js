@@ -24,6 +24,7 @@ const DetailModal = (props) => {
             visible={props.show}
             onOk={() => props.onClose()}
             onCancel={() => props.onClose()}
+            cancelButtonProps={{ style: {display: 'none'} }}
         >
             <List
                 header={<div>社团成员</div>}

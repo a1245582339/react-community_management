@@ -1,5 +1,9 @@
 import http from './config'
 
+export const getNotice = (params) => {
+    return http.get('/notice', { params })
+}
+
 export const createNotice = (data) => {
     return http.post('/notice', {data})    
 }

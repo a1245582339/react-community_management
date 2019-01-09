@@ -9,8 +9,8 @@ class Notice extends Controller {
   async getNotice() {
     const ctx = this.ctx;
     const query = ctx.request.query
-    const data = await ctx.service.notice.findNotice(query)
-    this.ctx.body = { code: 20000, msg: '公告', data }
+    const {notice, count} = await ctx.service.notice.findNotice(query)
+    this.ctx.body = { code: 20000, msg: '公告', data:notice , count }
   }
 
   async updateNotice() {
