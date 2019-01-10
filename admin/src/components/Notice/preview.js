@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Modal } from 'antd';
 import { getNotice } from '@/http/notice';
 import '@/style/components/notice/preview.scss';
+import Article from './article'
 
 const NoticePreview = (props) => {
     const [data, useData] = useState({})
@@ -24,7 +25,7 @@ const NoticePreview = (props) => {
             <div className="preview">
                 <div className="preview-content-box">
                     <div className="preview-content">
-
+                        <Article data={data} />
                     </div>
                 </div>
             </div>

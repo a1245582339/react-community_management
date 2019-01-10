@@ -16,10 +16,9 @@ class Notice extends Service {
         .offset(query.page * query.limit || 0)
         .limit(query.limit || 10)
       if (query.id) {
-        return {notice};
+        return {notice: notice[0]};
       }
       const count = (await this.app.knex('notice').where({isDel: 0}).count('*'))[0]['count(*)']
-      console.log(count)
       return {notice, count};
      
   }

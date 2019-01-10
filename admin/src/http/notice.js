@@ -1,7 +1,6 @@
 import http from './config'
 
 export const getNotice = (params) => {
-    console.log(params)
     return http.get('/notice', { params })
 }
 

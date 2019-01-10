@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { List, Pagination, Input, Skeleton } from 'antd'
 import { getNotice } from '@/http/notice';
+import { timestampToTime } from '@/utiles/time';
 import NoticePreview from '@/components/Notice/preview'
 
 const Search = Input.Search;
@@ -19,12 +20,14 @@ const Notice = () => {
     const fetchData = async () => {
         useLoading(true)
         const {data, count} = (await getNotice({page, limit, title: searchWord})).data
-        console.log({data, count})
         useData(data)
         useCount(count)
         setTimeout(() => {
             useLoading(false)
         }, 800)
+    }
+    const delNotice = async (id) => {
+        
     }
     return (
         <>
@@ -44,12 +47,12 @@ const Notice = () => {
                 renderItem={item => (
                     <List.Item
                         key={item.title}
-                        actions={loading ? [] :[<span style={{color: '#1890ff'}} onClick={() => {useNoticeId(item.id); usePreviewShow(true)}}>预览</span>, <span style={{color: '#f5222d'}}>删除</span>]}
+                        actions={loading ? [] :[<span style={{color: '#1890ff'}} onClick={() => {useNoticeId(item.id); usePreviewShow(true)}}>预览</span>, <span onClick={() => delNotice(item.id)} style={{color: '#f5222d'}}>删除</span>]}
                     >
                         <Skeleton loading={loading} active paragraph={{ rows: 1 }}>
                             <List.Item.Meta
                                 title={<a href={item.href}>{item.title}</a>}
-                                description={item.author}
+                                description={`作者：${item.author + ' '}发布时间：${timestampToTime(item.create_time)}`}
                             />
                         </Skeleton>
                     </List.Item>

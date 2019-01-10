@@ -7,3 +7,14 @@ export const timestampToDate = (timestamp) => {
     const D = supply0(date.getDate());
     return Y + M + D;
 };
+
+export const timestampToTime = (timestamp) => {
+    const date = new Date(timestamp - 0);
+    const Y = `${date.getFullYear()}-`;
+    const M = `${supply0(date.getMonth() + 1)}-`;
+    const D = supply0(date.getDate());
+    const h = supply0(date.getHours());
+    const m = supply0(date.getMinutes());
+    const s = supply0(date.getSeconds());
+    return Y + M + D + ` ${h}:${m}:${s}`;
+};
