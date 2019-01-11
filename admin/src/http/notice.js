@@ -4,8 +4,8 @@ export const getNotice = (params) => {
     return http.get('/notice', { params })
 }
 
-export const createNotice = (data) => {
-    return http.post('/notice', {data})    
+export const updateNotice = (data, id) => {
+    return http.post('/notice', {id, data})    
 }
 
 export const uploadImg = (img) => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { List, Pagination, Input, Skeleton } from 'antd'
-import { getNotice } from '@/http/notice';
+import { List, Pagination, Input, Skeleton, Modal, message  } from 'antd'
+import { getNotice, updateNotice } from '@/http/notice';
 import { timestampToTime } from '@/utiles/time';
 import NoticePreview from '@/components/Notice/preview'
 
@@ -26,8 +26,21 @@ const Notice = () => {
             useLoading(false)
         }, 800)
     }
-    const delNotice = async (id) => {
+    const delNotice = (id) => {
+        Modal.confirm({
+            title: '确定删除此条公告？',
+            async onOk() {
+                const res = await updateNotice({isDel: 1}, id)
+                console.log(res)
+                message.success('删除成功');
+                fetchData()
+            },
+            onCancel() {
+                console.log('Cancel');
+            }
+        });
         
+
     }
     return (
         <>

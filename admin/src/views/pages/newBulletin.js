@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { Button, Input, Modal, message } from 'antd';
 import RichText from '@/components/RichText';
-import { createNotice } from '@/http/notice';
+import { updateNotice } from '@/http/notice';
 import '@/style/pages/newBulletin.scss';
 
-const NewBulletin = () => {
+const NewBulletin = (props) => {
     const [title, useTitle] = useState('')
     const [author, useAuthor] = useState('')
     const [richText, useRichText] = useState('<p></p>')
@@ -40,10 +40,10 @@ const NewBulletin = () => {
             content: richText
         }
         useConfirmLoading(true)
-        await createNotice(data)
+        await updateNotice(data)
         message.success('创建成功');
         useConfirmLoading(false)
-        console.log(data)
+        props.history.push({pathname: '/main/notice'})
     }
 
     const handleCancel = () => {

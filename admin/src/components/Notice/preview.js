@@ -17,6 +17,7 @@ const NoticePreview = (props) => {
         <Modal
             title="预览"
             visible={props.show}
+            style={{ top: 20 }}
             onOk={() => {props.onClose(); useData({})}}
             onCancel={() => {props.onClose(); useData({})}}
             width='480px'

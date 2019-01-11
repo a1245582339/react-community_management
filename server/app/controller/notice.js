@@ -16,6 +16,7 @@ class Notice extends Controller {
   async updateNotice() {
     const ctx = this.ctx;
     const id = ctx.request.body.id
+    console.log('id>>>>>>>>>>>>>>>>>>>>>>>>', id)
     const data = ctx.request.body.data
     if (id) {
       await ctx.service.notice.updateNotice(id, data)
