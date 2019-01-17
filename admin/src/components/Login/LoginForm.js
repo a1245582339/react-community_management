@@ -3,6 +3,7 @@ import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { login } from '@/http/login';
 import { setToken } from '@/utiles/js-cookie';
+import md5 from 'js-md5';
 
 const FormItem = Form.Item;
 const LoginFrom = (props) => {
@@ -11,6 +12,7 @@ const LoginFrom = (props) => {
         e.preventDefault();
         props.form.validateFields(async (err, values) => {
             if (!err) {
+                values.password = md5(values.password)
                 const res = await login(values)
                 const token = res.data.token
                 setToken('bare ' + token)

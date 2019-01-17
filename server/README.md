@@ -73,14 +73,15 @@ Content-Type:application/json
 POST /admin
 ```
 #### 参数
-```json
-    id: 用户id,
+```
+id: 用户id,
+data: {
     login_name: 登录名,
     name: 用户名,
     password: 密码,
     role: 角色,
     isDel: 删除     // 0: 未删, 1: 已删
-
+}
 // 有id时为更新，否则为新增
 ```
 #### 响应

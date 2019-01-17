@@ -25,7 +25,7 @@ class Admin extends Controller {
     const { login_name, password } = jwt.verify(ctx.request.header.authorization.split(' ')[1], 'secret');
     const res = await ctx.service.admin.find({ login_name, password })
     if (res.length) {
-      ctx.body = { code: 20000, res }
+      ctx.body = { code: 20000, data: res[0] }
     } else {
       ctx.status = 401
       ctx.body = { code: 20001, msg: '用户失效，请重新登录！' }
@@ -52,9 +52,9 @@ class Admin extends Controller {
     } else {
       const isExsit = (await ctx.service.admin.find({login_name: data.login_name})).length
       if (isExsit) {
-        await ctx.service.admin.create(data)
         ctx.body = {code: 20003, msg: '用户名已存在，新增失败！'}
       } else {
+        await ctx.service.admin.create(data)
         ctx.body = {code: 20000, msg: '新增成功'}
       }
     }

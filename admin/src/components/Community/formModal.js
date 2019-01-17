@@ -36,7 +36,6 @@ const FormModal = (props) => {
             }
             const res = postCommunity(id, values)
             props.onClose()
-            form.resetFields()
             props.onSuccess( id ? '更新成功' : '新增成功' )
             console.log('Received values of form: ', res)
         });
@@ -48,7 +47,7 @@ const FormModal = (props) => {
             title={ props.formData ? '编辑社团' : '新增社团' }
             visible={props.formShow}
             onOk={handleOk}
-            onCancel={() => props.onClose()}
+            onCancel={() => {props.form.resetFields(); props.onClose()}}
         >
             <Form onSubmit={() => handleOk()}>
                 <Form.Item

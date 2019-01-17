@@ -1,6 +1,4 @@
 'use strict'
-const fs = require('fs')
-const path = require('path')
 const jwt = require('jsonwebtoken') // 引入jsonwebtoken
 
 module.exports = () => {

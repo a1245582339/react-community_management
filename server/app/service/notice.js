@@ -37,12 +37,12 @@ class Notice extends Service {
 
   async findNoticeLog(notice_id, start_time, end_time) {
     const log = await this.app.knex('notice_log')
-      .select('notice.title', 'notice.author', 'notice.create_time', 'student.stu_id', 'student.stu_name', 'student.sex')
+      .select('notice.title', 'notice_log.notice_id',  'notice.create_time', 'student.stu_id', 'student.stu_name', 'student.sex')
       .leftJoin('notice', 'notice_log.notice_id', 'notice.id')
       .leftJoin('student', 'notice_log.stu_id', 'student.stu_id')
-      .where({ notice_id })
-     // .whereBetween('notice_log.create_time', [ start_time, end_time ])
-    return log
+      .where(notice_id ? { notice_id } : {})
+      .whereBetween('notice_log.create_time', [ start_time, end_time ])
+      return log
   }
 
   async createNoticeLog(data) {

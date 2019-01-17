@@ -5,7 +5,7 @@ const Service = require('egg').Service;
 class Admin extends Service {
 
   async find(query) {
-    const admin = await this.app.knex.select('id', 'login_name', 'name', 'role').from('admin')
+    const admin = await this.app.knex.select('id', 'login_name', 'name', 'password', 'role').from('admin')
       .where({
         ...query,
         isDel: 0

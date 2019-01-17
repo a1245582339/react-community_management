@@ -51,6 +51,8 @@ const Main = () => {
                         <Route path="/main/newBulletin" component={ Pages.NewBulletin } />
                         <Route path="/main/community" component={ Pages.Community } />
                         <Route path="/main/notice" component={ Pages.Notice } />
+                        <Route path="/main/statistics" component={ Pages.Statistics } />
+                        <Route path="/main/admin" component={ Pages.Admin } />
                     </Switch>
                 </Content>
             </Layout>

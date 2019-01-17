@@ -9,9 +9,6 @@
 		"name": "社团管理",
 		"icon": "solution",
 		"path": "/community"
-	}, {
-		"name": "人员组织管理",
-		"icon": "team"
 	}]
 }, {
 	"name": "公告相关",
@@ -26,11 +23,13 @@
 		"path": "/notice"
 	}, {
 		"name": "流量统计",
-		"icon": "area-chart"
+		"icon": "area-chart",
+		"path": "/statistics"
 	}]
 }, {
 	"name": "管理员管理",
-	"icon": "lock"
+	"icon": "lock",
+	"path": "/admin"
 }, {
 	"name": "个人信息",
 	"icon": "user",
