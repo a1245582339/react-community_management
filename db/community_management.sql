@@ -11,7 +11,7 @@
  Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 09/01/2019 17:02:14
+ Date: 17/01/2019 18:36:27
 */
 
 SET NAMES utf8mb4;
@@ -29,14 +29,14 @@ CREATE TABLE `admin`  (
   `role` int(11) NOT NULL COMMENT '1: 管理员 2： 超级管理员',
   `isDel` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES (1, 'admin', 'admin', '111111', 1, 0);
-INSERT INTO `admin` VALUES (2, 'bbb', 'bbb', 'aaa', 1, 0);
-INSERT INTO `admin` VALUES (3, 'test', 'test', 'bbb', 1, 0);
+INSERT INTO `admin` VALUES (1, 'admin', 'admin', '96e79218965eb72c92a549dd5a330112', 2, 0);
+INSERT INTO `admin` VALUES (2, 'bbb', 'bbb', '96e79218965eb72c92a549dd5a330112', 1, 0);
+INSERT INTO `admin` VALUES (3, 'test', 'test', '96e79218965eb72c92a549dd5a330112', 1, 0);
 
 -- ----------------------------
 -- Table structure for community
@@ -150,14 +150,17 @@ CREATE TABLE `notice`  (
   `create_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `isDel` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of notice
 -- ----------------------------
 INSERT INTO `notice` VALUES (1, 'test', 'test', '<h1>test</h1>', '1542955541456', 0);
-INSERT INTO `notice` VALUES (2, '天津财经大学艺体团', 'test', 'qweqweqweqweqweweqwq', '1545120330588', 0);
-INSERT INTO `notice` VALUES (3, 'testtitle', 'testzuozhe', '<p>a<em>erq</em>wew<strong>ewqe</strong></p>\n', '1546941430033', 0);
+INSERT INTO `notice` VALUES (2, 'testtitle', 'testzuozhe', '<p>a<em>erq</em>wew<strong>ewqe</strong></p>\n', '1546941430033', 0);
+INSERT INTO `notice` VALUES (3, '新增一个图片公告', '妈耶', '<p>妈耶妈耶</p>\n<p></p>\n<img src=\"http://localhost:3000/public/img/notice_1547113994143hxdhjagkoos.jpg\" alt=\"undefined\" style=\"float:none;height: auto;width: auto\"/>\n<p></p>\n<p>妈耶</p>\n', '1547113998496', 0);
+INSERT INTO `notice` VALUES (4, '测试滚动', '滚动', '<p></p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n<p></p>\n<p>test&nbsp;</p>\n<p></p>\n<p><br>&nbsp;</p>\n', '1547172573974', 0);
+INSERT INTO `notice` VALUES (6, '测试', '测试', '<p>测试</p>\n', '1547175157568', 1);
+INSERT INTO `notice` VALUES (7, '测试跳转', '跳转', '<p>路由的跳转</p>\n', '1547175863951', 0);
 
 -- ----------------------------
 -- Table structure for notice_log
@@ -169,14 +172,16 @@ CREATE TABLE `notice_log`  (
   `stu_id` int(11) NOT NULL,
   `create_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of notice_log
 -- ----------------------------
-INSERT INTO `notice_log` VALUES (1, 1, 2014111634, '1544444530000');
-INSERT INTO `notice_log` VALUES (2, 2, 2014111634, '1545184180844');
-INSERT INTO `notice_log` VALUES (3, 1, 2014111634, '1545906882293');
+INSERT INTO `notice_log` VALUES (1, 1, 2014111634, '1547094464000');
+INSERT INTO `notice_log` VALUES (2, 2, 2014111634, '1547094464123');
+INSERT INTO `notice_log` VALUES (3, 1, 2014111634, '1547094465454');
+INSERT INTO `notice_log` VALUES (4, 3, 2014111634, '1547094469999');
+INSERT INTO `notice_log` VALUES (5, 4, 2014111634, '1547094499999');
 
 -- ----------------------------
 -- Table structure for student
@@ -195,5 +200,10 @@ CREATE TABLE `student`  (
 -- Records of student
 -- ----------------------------
 INSERT INTO `student` VALUES ('2014111634', '0', 'test', '13555555555', 1);
+INSERT INTO `student` VALUES ('2015111624', '0', '赵秀', '15744578456', 2);
+INSERT INTO `student` VALUES ('2015111625', '0', '李雯', '15620227456', 2);
+INSERT INTO `student` VALUES ('2015111626', '0', '郭靖', '15692240123', 2);
+INSERT INTO `student` VALUES ('2015111627', '0', '赵义', '15122103432', 1);
+INSERT INTO `student` VALUES ('2015111628', '0', '余金', '18810285435', 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
