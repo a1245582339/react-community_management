@@ -14,11 +14,14 @@ export const getAdmin = async () => {
 }
 
 export const updateAdmin = (data, id) => {
-    console.log(data, id)
     return http.post('/admin', {
         id: id,
         data: data
     })
+}
+
+export const checkPassword = (params) => {
+    return http.get('/admin/password', {params})
 }
 
 export const getMe = () => {

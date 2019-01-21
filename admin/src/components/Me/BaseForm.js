@@ -1,6 +1,7 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Select } from 'antd';
+import { Form, Icon, Input, Button, message } from 'antd';
 import { withRouter } from 'react-router-dom';
+import { updateAdmin } from '@/http/admin';
 
 
 const formItemLayout = {
@@ -15,7 +16,9 @@ const LoginFrom = (props) => {
         e.preventDefault();
         props.form.validateFields(async (err, values) => {
             if (!err) {
-                
+                const id = props.formData.id
+                await updateAdmin(values, id)
+                message.success('更新成功！');
             }
         });
     }
@@ -27,7 +30,7 @@ const LoginFrom = (props) => {
             
                 {getFieldDecorator('name', {
                     initialValue: 'admin',
-                    rules: [{ required: true, message: '姓名' }]
+                    rules: [{ required: true, message: '请输入姓名' }]
                 })(
                     <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入用户名" />
                 )}

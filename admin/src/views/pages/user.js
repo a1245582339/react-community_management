@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { getMe, updateAdmin } from '@/http/admin';
-import MyForm from '@/components/Me/Form';
+import { Card } from 'antd';
+import { getMe } from '@/http/admin';
+import MyForm from '@/components/Me/BaseForm';
+import PasswordForm from '@/components/Me/PasswordForm';
 const User = () => {
     const [info, useInfo] = useState({})
     useEffect(async () => {
@@ -8,7 +10,20 @@ const User = () => {
     }, [])
     return( 
         <>
-            <MyForm formData={info} />
+            <Card
+                title="基本信息"
+                style={{ width: 1000 }}
+            >
+                <MyForm formData={info} />
+            </Card>
+
+            <Card
+                title="密码修改"
+                style={{ width: 1000, marginTop: 50 }}
+            >
+                <PasswordForm formData={info} />
+            </Card>
+            
         </>
     )
 }

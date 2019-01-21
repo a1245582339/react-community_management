@@ -2,18 +2,23 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Menu, Icon } from 'antd';
 import { withRouter } from 'react-router-dom';
 import menu from '@/json/menu.json'
+import { getMe } from '@/http/admin';
 
 const { Item, SubMenu } = Menu
 
 const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
     const [rootSubmenuKeys, useRootSubmenuKeys] = useState([])
     const [currentKey, useCurrentKey] = useState([])
+    const [role, useRole] = useState(1)
     useEffect(async () => {
         useRootSubmenuKeys(menu.map((_, index) => index + ''))
     }, [])
     useEffect(async () => {
         useCurrentKey([location.pathname.replace(match.path, '')])
     }, [location.pathname])
+    useEffect(async () => {
+        useRole((await (getMe())).data.role)
+    }, [])
     const handleClick = (e) => {
         useCurrentKey([e.key])
         history.push(match.path + e.item.props.path)
@@ -38,6 +43,10 @@ const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
                         {menuToJsx(item.children, index)}
                     </SubMenu>
                 )
+            } else if (role === 1 && item.path === "/admin") {
+                return (
+                    <></>
+                )
             } else {
                 return (
                     <Item key={item.path ? item.path : (parentIndex ? `${parentIndex}-${index}` : index)} path={item.path}>
@@ -45,7 +54,6 @@ const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
                         <span className="nav-text">{item.name}</span>
                     </Item>
                 )
-                
             }
         })
     }, [])

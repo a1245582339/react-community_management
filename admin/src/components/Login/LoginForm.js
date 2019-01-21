@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { login } from '@/http/login';
 import { setToken } from '@/utiles/js-cookie';
@@ -14,10 +14,15 @@ const LoginFrom = (props) => {
             if (!err) {
                 values.password = md5(values.password)
                 const res = await login(values)
-                const token = res.data.token
-                setToken('bare ' + token)
-                // console.log('Received values of form: ', res);
-                // props.history.push('/')
+                if (res.data.code === 20000) {
+                    const token = res.data.token
+                    setToken('bare ' + token)
+                    props.history.push('/')
+                    message.success('登录成功！')
+                } else {
+                    message.error(res.data.msg)
+                }
+                
             }
         });
     }
@@ -57,4 +62,4 @@ const LoginFrom = (props) => {
 
 const WrappedNormalLoginForm = Form.create()(LoginFrom);
 const LoginFromComponent = withRouter(WrappedNormalLoginForm);
-export default LoginFromComponent;
+export default withRouter(LoginFromComponent);

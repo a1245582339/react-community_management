@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { Layout } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Layout, message } from 'antd';
+import { getToken } from '@/utiles/js-cookie'
 import '@/style/main.scss'
 
 import SideMenu from './layout/sideMenu'
 import HeaderBar from './layout/headerBar'
 
 import Pages from './pages'
+import NoFound from './404'
+
 
 
 const { Header, Sider, Content } = Layout;
 const style = {height: '100%'}
 
-const Main = () => {
+const Main = (props) => {
+    
+    useEffect(() => {
+        LoginOut()
+    }, [props.history.location.pathname])   // 路径变化时验证
+
+    const LoginOut = () => {
+        // console.log(getToken())
+        if (!getToken() || getToken() === 'undefined') {
+            message.warning('登录过期！请重新登登录！');
+            props.history.push('/login')
+        }
+    }
+
     const [collapsed, useCollapsed] = useState(false)
     
     const [openKeys, useOpenKeys] = useState([]);
@@ -53,6 +69,7 @@ const Main = () => {
                         <Route path="/main/notice" component={ Pages.Notice } />
                         <Route path="/main/statistics" component={ Pages.Statistics } />
                         <Route path="/main/admin" component={ Pages.Admin } />
+                        <Route component={ NoFound } />
                     </Switch>
                 </Content>
             </Layout>
@@ -61,4 +78,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default withRouter(Main)

@@ -1,9 +1,11 @@
 import React from 'react'
 import { Menu, Dropdown, Icon } from 'antd';
 import { withRouter } from 'react-router-dom';
+import { delToken } from '@/utiles/js-cookie';
 
 const DropMenu = (props) => {
     const LoginOut = () => {
+        delToken()
         props.history.push('/login')
     }
     const menu = (
