@@ -17,7 +17,8 @@ const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
         useCurrentKey([location.pathname.replace(match.path, '')])
     }, [location.pathname])
     useEffect(async () => {
-        useRole((await (getMe())).data.role)
+        const currRole = (await getMe()).role
+        useRole(currRole)
     }, [])
     const handleClick = (e) => {
         useCurrentKey([e.key])
@@ -36,6 +37,7 @@ const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
     }
 
     const menuToJsx = useCallback((menu, parentIndex) => {
+        // console.log('change>>>>>>>>>>>>>')
         return menu.map((item, index) => {
             if (item.children && item.children.length) {
                 return (
@@ -44,9 +46,8 @@ const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
                     </SubMenu>
                 )
             } else if (role === 1 && item.path === "/admin") {
-                return (
-                    <></>
-                )
+                // eslint-disable-next-line
+                return 
             } else {
                 return (
                     <Item key={item.path ? item.path : (parentIndex ? `${parentIndex}-${index}` : index)} path={item.path}>
@@ -56,7 +57,7 @@ const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
                 )
             }
         })
-    }, [])
+    }, [role])
 
     return(
         <Menu 
