@@ -27,7 +27,7 @@ const FormModal = (props) => {
             if (props.formData) {
                 id = props.formData.id
             }
-            values.password = md5(values.password)
+            // values.password = md5(values.password)
             updateAdmin(values, id).then(res => {
                 if (res.data.code === 20003) {
                     message.error(res.data.msg);
@@ -74,7 +74,7 @@ const FormModal = (props) => {
                         <Input />
                     )}
                 </Form.Item>
-                <Form.Item
+                {/* <Form.Item
                     {...formItemLayout}
                     label="密码"
                 >
@@ -86,7 +86,7 @@ const FormModal = (props) => {
                     })(
                         <Input type="password" />
                     )}
-                </Form.Item>
+                </Form.Item> */}
                 
                 <Form.Item
                     {...formItemLayout}

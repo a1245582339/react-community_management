@@ -25,7 +25,11 @@ const Admin = () => {
         render: (text, record) => {
             if (record.id === me.id) {
                 return (
-                    <span>不可操作自己</span>
+                    <span>请在个人信息页面操作</span>
+                )
+            } else if (record.role === 2) {
+                return (
+                    <span>不可操作超级管理员</span>
                 )
             }
             else {

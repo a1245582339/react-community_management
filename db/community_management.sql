@@ -11,7 +11,7 @@
  Target Server Version : 50723
  File Encoding         : 65001
 
- Date: 17/01/2019 18:36:27
+ Date: 28/01/2019 15:58:28
 */
 
 SET NAMES utf8mb4;
@@ -29,14 +29,14 @@ CREATE TABLE `admin`  (
   `role` int(11) NOT NULL COMMENT '1: 管理员 2： 超级管理员',
   `isDel` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
 INSERT INTO `admin` VALUES (1, 'admin', 'admin', '96e79218965eb72c92a549dd5a330112', 2, 0);
-INSERT INTO `admin` VALUES (2, 'bbb', 'bbb', '96e79218965eb72c92a549dd5a330112', 1, 0);
-INSERT INTO `admin` VALUES (3, 'test', 'test', '96e79218965eb72c92a549dd5a330112', 1, 0);
+INSERT INTO `admin` VALUES (2, 'bbb', 'bbb', '96e79218965eb72c92a549dd5a330112', 2, 0);
+INSERT INTO `admin` VALUES (3, 'test1', 'test', '96e79218965eb72c92a549dd5a330112', 1, 0);
 
 -- ----------------------------
 -- Table structure for community
@@ -86,7 +86,7 @@ CREATE TABLE `community_student`  (
 -- ----------------------------
 -- Records of community_student
 -- ----------------------------
-INSERT INTO `community_student` VALUES (1, 2014111634, 1, 0, 0);
+INSERT INTO `community_student` VALUES (1, 2014111634, 1, 0, 1);
 INSERT INTO `community_student` VALUES (2, 2014111634, 2, 1, 0);
 
 -- ----------------------------
@@ -119,7 +119,7 @@ CREATE TABLE `dept`  (
   `dept_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `isDel` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dept
@@ -137,6 +137,37 @@ INSERT INTO `dept` VALUES (10, '会计一系', 0);
 INSERT INTO `dept` VALUES (11, '会计一系文艺部', 0);
 INSERT INTO `dept` VALUES (12, '会计一系学习部', 0);
 INSERT INTO `dept` VALUES (13, '会计一系社团联', 0);
+INSERT INTO `dept` VALUES (14, '会计一系体育部', 0);
+INSERT INTO `dept` VALUES (15, '会计一系生活部', 0);
+INSERT INTO `dept` VALUES (16, '会计二系学工办', 0);
+INSERT INTO `dept` VALUES (17, '企管系', 0);
+INSERT INTO `dept` VALUES (18, '管科系', 0);
+INSERT INTO `dept` VALUES (19, '营销系', 0);
+INSERT INTO `dept` VALUES (20, '营销系学工办', 0);
+INSERT INTO `dept` VALUES (21, '管信系', 0);
+INSERT INTO `dept` VALUES (22, '旅游系', 0);
+INSERT INTO `dept` VALUES (23, '旅游系团总支', 0);
+INSERT INTO `dept` VALUES (24, '旅游系学工部', 0);
+INSERT INTO `dept` VALUES (25, '金融系', 0);
+INSERT INTO `dept` VALUES (26, '金融信用学工部', 0);
+INSERT INTO `dept` VALUES (27, '国贸系', 0);
+INSERT INTO `dept` VALUES (28, '国贸系团总支', 0);
+INSERT INTO `dept` VALUES (29, '财政系', 0);
+INSERT INTO `dept` VALUES (30, '财政系业余党校', 0);
+INSERT INTO `dept` VALUES (31, '人文学院', 0);
+INSERT INTO `dept` VALUES (32, '理工学院', 0);
+INSERT INTO `dept` VALUES (33, '理工学院学工办', 0);
+INSERT INTO `dept` VALUES (34, '法学院', 0);
+INSERT INTO `dept` VALUES (35, '法学院学生会', 0);
+INSERT INTO `dept` VALUES (36, '艺术学院', 0);
+INSERT INTO `dept` VALUES (37, '实验班', 0);
+INSERT INTO `dept` VALUES (38, '体训部', 0);
+INSERT INTO `dept` VALUES (39, '创新与创业研究中心', 0);
+INSERT INTO `dept` VALUES (40, '图书馆', 0);
+INSERT INTO `dept` VALUES (41, '经济系', 0);
+INSERT INTO `dept` VALUES (42, '经济系团总支', 0);
+INSERT INTO `dept` VALUES (43, '国际工商学院', 0);
+INSERT INTO `dept` VALUES (44, '国际工商学院团总支', 0);
 
 -- ----------------------------
 -- Table structure for notice

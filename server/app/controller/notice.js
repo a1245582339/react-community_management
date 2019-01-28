@@ -56,11 +56,11 @@ class Notice extends Controller {
     const ctx = this.ctx
     const stream = await ctx.getFileStream()
     
-    const filename = 'notice_' + Date.now() + Math.random().toString(36).substr(2) + path
-            .extname(stream.filename)
-            .toLocaleLowerCase();
-    const target = './app/public/img/' + filename
-    const writeStream = fs.createWriteStream(target);
+    const filename = 'notice_' + Date.now() + Math.random().toString(36).substr(2) + path   // 重命名
+            .extname(stream.filename)   // 拓展名
+            .toLocaleLowerCase();   // 一律转为小写
+    const target = './app/public/img/' + filename   // 存放位置
+    const writeStream = fs.createWriteStream(target);   // 将文件存放到对应路径
     try {
       await awaitWriteStream(stream.pipe(writeStream));
       ctx.body = {msg: 'ok', url: 'http://localhost:3000/public/img/' + filename}
@@ -68,7 +68,6 @@ class Notice extends Controller {
       throw err
     }
   }
-
 }
 
 module.exports = Notice;
