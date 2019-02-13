@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Form, Input, Select, message } from 'antd';
 import { updateAdmin } from '@/http/admin';
-import md5 from 'js-md5';
+// import md5 from 'js-md5';
 
 const Option = Select.Option;
 const formItemLayout = {
