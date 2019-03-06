@@ -12,7 +12,7 @@ const LoginCard = () => {
         >
             <div className="login-title">
                 <img width="30" src={ require("@/assets/logo.svg") } alt="logo"/>
-                XX管理系统
+                社团管理系统
             </div>
             <LoginForm />
         </Card>

@@ -22,7 +22,7 @@ class Admin extends Service {
 
   async create(data) {
     const createAdmin = await this.app.knex
-      .insert(data)
+      .insert({...data, password: '0b4e7a0e5fe84ad35fb5f95b9ceeac79'})
       .into('admin')
     return createAdmin === 1
   }
