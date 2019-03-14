@@ -62,9 +62,9 @@ const LoginFrom = (props) => {
                 {...formItemLayout}>
             
                 {getFieldDecorator('newPassword', {
-                    rules: [{ required: true, message: '请输入新户名' }, { validator: checkPasswordValidator }]
+                    rules: [{ required: true, message: '请输入新密码' }, { validator: checkPasswordValidator }]
                 })(
-                    <Input type="password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入新户名" />
+                    <Input type="password" prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="请输入新密码" />
                 )}
             </FormItem>
             <FormItem label="重复密码"
