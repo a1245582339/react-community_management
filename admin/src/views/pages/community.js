@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Table, Pagination, Input, message } from 'antd'
 import FormModal from '@/components/Community/formModal';
-import DetailModal from '@/components/Community/detailModal'
+// import DetailModal from '@/components/Community/detailModal'
 import { getCommunity, getDept, getType } from '@/http/community';
 
 const ButtonGroup = Button.Group;
@@ -49,7 +49,7 @@ const Community = () => {
                 <span>
                     <ButtonGroup>
                         <Button type="primary" icon="edit" onClick={() => (handleClickForm(record))} />
-                        <Button type="primary" icon="file-text" onClick={() => (handleShowDetail(record))} />
+                        {/* <Button type="primary" icon="file-text" onClick={() => (handleShowDetail(record))} /> */}
                     </ButtonGroup>
                 </span>
             )
@@ -64,8 +64,8 @@ const Community = () => {
     const [searchWord, useSearchWord] = useState('');
     const [loading, useLoading] = useState(true);
     const [formShow, useFormShow] = useState(false);
-    const [detailShow, useDetailShow] = useState(false);
-    const [detail, useDetail] = useState({})
+    // const [detailShow, useDetailShow] = useState(false);
+    // const [detail, useDetail] = useState({})
     const [form, useForm] = useState({})
     const [dept, useDept] = useState([])
     const [type, useType] = useState([])
@@ -94,10 +94,10 @@ const Community = () => {
         fetchData()
     }
 
-    const handleShowDetail = (data) => {
-        useDetailShow(true)
-        useDetail(data)
-    }
+    // const handleShowDetail = (data) => {
+    //     useDetailShow(true)
+    //     useDetail(data)
+    // }
     
     return (
         <>
@@ -112,7 +112,7 @@ const Community = () => {
             <Pagination style={{marginTop: '20px', float: 'right'}} showSizeChanger onChange={page => usePage(page - 1)} onShowSizeChange={(current, pageSize) => useLimit(pageSize)} defaultCurrent={1} total={count} />
             
             <FormModal dept={dept} type={type} formData={form} formShow={formShow} onClose={() => useFormShow(false)} onSuccess={(msg) => onEditSuccess(msg)} />
-            <DetailModal detail={detail} show={detailShow} onClose={() => useDetailShow(false)} />
+            {/* <DetailModal detail={detail} show={detailShow} onClose={() => useDetailShow(false)} /> */}
         </>
     )
 }
