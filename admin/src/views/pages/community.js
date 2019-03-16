@@ -109,7 +109,16 @@ const Community = () => {
             />
             <Button icon="plus-circle" style={{float: 'right'}} type="primary" onClick={() => handleClickForm()}>添加社团</Button>
             <Table pagination={false} style={{marginTop: '20px',background: '#fff'}} dataSource={data} columns={columns} loading={loading} />
-            <Pagination style={{marginTop: '20px', float: 'right'}} showSizeChanger onChange={page => usePage(page - 1)} onShowSizeChange={(current, pageSize) => useLimit(pageSize)} defaultCurrent={1} total={count} />
+            
+            <Pagination 
+                style={{marginTop: '20px', float: 'right'}} 
+                showSizeChanger 
+                onChange={page => usePage(page - 1)} 
+                onShowSizeChange={(current, pageSize) => 
+                    useLimit(pageSize)} 
+                defaultCurrent={1} 
+                total={count}
+            />
             
             <FormModal dept={dept} type={type} formData={form} formShow={formShow} onClose={() => useFormShow(false)} onSuccess={(msg) => onEditSuccess(msg)} />
             {/* <DetailModal detail={detail} show={detailShow} onClose={() => useDetailShow(false)} /> */}

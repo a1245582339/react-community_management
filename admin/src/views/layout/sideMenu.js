@@ -37,7 +37,6 @@ const SideMenu = ({openKeys, useOpenKeys, history, match, location}) => {
     }
 
     const menuToJsx = useCallback((menu, parentIndex) => {
-        // console.log('change>>>>>>>>>>>>>')
         return menu.map((item, index) => {
             if (item.children && item.children.length) {
                 return (

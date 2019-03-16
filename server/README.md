@@ -419,58 +419,6 @@ Content-Type:application/json
 }
 ```
 ***
-### 获取社团成员
-
-#### 请求
-```http
-GET /community/student
-```
-#### 参数
-```
-community_id: 社团id
-```
-#### 响应
-```json
-HTTP/1.1 200 OK
-Content-Type:application/json
-{
-    "code": 20000,
-    "msg": "社团成员",
-    "data": [
-        {
-            "stu_id": "2014111634",
-            "stu_name": "test",
-            "tel": "13555555555",
-            "role": 0
-        }
-    ]
-}
-```
-***
-### 更新社团成员
-
-#### 请求
-```http
-POST /community/student
-```
-#### 参数
-```
-id: 记录id      // 有id为更新，没有id为新增
-data: {
-    isDel: 1或0
-    // 其他参数暴露了接口，可以调用，但是页面没有实际操作
-}
-```
-#### 响应
-```json
-HTTP/1.1 200 OK
-Content-Type:application/json
-{
-    "code": 20000,
-    "msg": "更新成功"
-}
-```
-***
 ### 获取社团分类
 
 #### 请求

@@ -5,7 +5,7 @@ import '@/style/components/notice/article.scss'
 const Article = (props) => {
     return (
         <>
-            <section>
+            <section className="article">
                 <h1>{props.data.title}</h1>
                 <div className="desc">
                     <span>作者：{props.data.author}</span><br/><span>发布时间：{timestampToTime(props.data.create_time)}</span>

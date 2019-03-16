@@ -54,16 +54,16 @@ class Notice extends Controller {
 
   async upload() {
     const ctx = this.ctx
-    const stream = await ctx.getFileStream()
+    const stream = await ctx.getFileStream()  // 获取前端发送至后台的文件
     
     const filename = 'notice_' + Date.now() + Math.random().toString(36).substr(2) + path   // 重命名
             .extname(stream.filename)   // 拓展名
-            .toLocaleLowerCase();   // 一律转为小写
+            .toLocaleLowerCase();   // 文件名+后缀中的大写字母转为小写
     const target = './app/public/img/' + filename   // 存放位置
     const writeStream = fs.createWriteStream(target);   // 将文件存放到对应路径
     try {
-      await awaitWriteStream(stream.pipe(writeStream));
-      ctx.body = {msg: 'ok', url: 'http://localhost:3000/public/img/' + filename}
+      await awaitWriteStream(stream.pipe(writeStream)); // 尝试写入文件
+      ctx.body = {msg: 'ok', url: 'http://localhost:3000/public/img/' + filename} // 将文件路径响应回前端
     } catch (err) {
       throw err
     }

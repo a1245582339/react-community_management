@@ -24,7 +24,6 @@ const Main = (props) => {
     }, [props.history.location.pathname])   // 路径变化时验证
 
     const LoginOut = () => {
-        // console.log(getToken())
         if (!getToken() || getToken() === 'undefined') {
             message.warning('登录过期！请重新登登录！');
             props.history.push('/login')
