@@ -17,7 +17,7 @@ const DropMenu = (props) => {
     return(
         <Dropdown style={{cursor: 'point'}} overlay={menu}>
             <div className="drop-link">
-                <img src={ require('@/assets/avater.jpg') } alt="avater"/>
+                <img src={ require('@/assets/avater.png') } alt="avater"/>
                 <Icon style={{color: '#f8f8f9'}} type="down" />
             </div>
         </Dropdown>

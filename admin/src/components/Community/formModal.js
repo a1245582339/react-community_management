@@ -37,6 +37,7 @@ const FormModal = (props) => {
             const res = postCommunity(id, values)
             props.onClose()
             props.onSuccess( id ? '更新成功' : '新增成功' )
+            props.form.resetFields()
             console.log('Received values of form: ', res)
         });
     }
