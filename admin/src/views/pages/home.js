@@ -1,10 +1,10 @@
 import React from 'react'
-import logo from '@/assets/main-logo.gif';
+
 const Home = () => {
     return(
         <>
             <div style={{textAlign: 'center'}}>
-                <img src={logo} alt=""/>
+                <iframe title="iframe" frameborder="0" scrolling="no" style={{height: '700px', width: '100%'}} src="http://localhost:8081"></iframe>
             </div>
         </>
     )
