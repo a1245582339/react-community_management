@@ -1,3 +1,5 @@
+// 集成所有内容页面并一起导出
+
 import User from './user'
 import Home from './home'
 import NewBulletin from './newBulletin'

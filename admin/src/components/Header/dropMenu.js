@@ -1,3 +1,4 @@
+// 顶部栏右侧下拉菜单
 import React from 'react'
 import { Menu, Dropdown, Icon } from 'antd';
 import { withRouter } from 'react-router-dom';
@@ -5,12 +6,14 @@ import { delToken } from '@/utiles/js-cookie';
 
 const DropMenu = (props) => {
     const LoginOut = () => {
-        delToken()
-        props.history.push('/login')
+        delToken()  // 删除cookie中的token
+        props.history.push('/login')    // 跳转到登录页
     }
     const menu = (
         <Menu>
+            {/* 点击个人信息跳转到 /user */}
             <Menu.Item key="1" onClick={() => props.history.push('/main/user')}><Icon type="user" theme="outlined" /><span>个人信息</span></Menu.Item>
+            {/* 点击退出登录调用loginout方法 */}
             <Menu.Item key="2" onClick={LoginOut}><Icon type="export" theme="outlined" /><span>退出登录</span></Menu.Item>
         </Menu>
     );

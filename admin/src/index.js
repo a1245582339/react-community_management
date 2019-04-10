@@ -1,11 +1,12 @@
+// 入口文件
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { LocaleProvider } from 'antd'
-import zhCN from 'antd/lib/locale-provider/zh_CN';
-import './index.css';
-import App from './App';
+import { LocaleProvider } from 'antd'   // 国际化
+import zhCN from 'antd/lib/locale-provider/zh_CN';  // 国际化语言文件，选择中文
+import './index.css';   // 样式文件
+import App from './App';    // app主体
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';   // 路由跳转用的
 
 ReactDOM.render(
     <BrowserRouter>

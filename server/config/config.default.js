@@ -8,10 +8,10 @@ module.exports = appInfo => {
 
   // add your config here
   config.middleware = [
-    'jwt',
+    'jwt',  // 使用json web token中间件
   ];
   config.jwt = {
-    ignore: ['/login'],
+    ignore: ['/login'],   // 请求登录接口的时候不通过中间件
   }
 
   config.security = {
@@ -20,7 +20,7 @@ module.exports = appInfo => {
     },
   };
 
-  exports.knex = {
+  exports.knex = {  // kenx的数据库配置
     // database configuration
     client: {
       // database dialect
@@ -48,7 +48,7 @@ module.exports = appInfo => {
     agent: false,
   };
 
-  config.mysql = {
+  config.mysql = {  
     // 单数据库信息配置
     client: {
       // host

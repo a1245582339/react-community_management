@@ -28,7 +28,7 @@ const LoginFrom = (props) => {
         });
     }
 
-    const checkPasswordValidator = (rule, value, callback) => {
+    const checkPasswordValidator = (rule, value, callback) => {     // 校验密码合法性
         if (!/^[a-zA-Z]\w{5,17}$/.test(value)) {
             callback(new Error('以字母开头，长度在6~18之间，只能包含字母、数字和下划线！'));
         } else {
@@ -38,7 +38,7 @@ const LoginFrom = (props) => {
 
     const compareToFirstPassword = (rule, value, callback) => {
         const form = props.form;
-        if (value && value !== form.getFieldValue('newPassword')) {
+        if (value && value !== form.getFieldValue('newPassword')) {     // 校验两次密码是否一致
             callback('两次密码必须一致！');
         } else {
             callback();

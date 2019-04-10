@@ -10,7 +10,7 @@ const User = () => {
     }, [])
     return( 
         <>
-            <Card
+            <Card 
                 title="基本信息"
                 style={{ width: 1000 }}
             >
